@@ -12,6 +12,7 @@ jobs:
 
       - name: Install PlantUML
         run: |
+          sudo apt install graphviz
           wget https://github.com/plantuml/plantuml/releases/download/v1.2024.7/plantuml-1.2024.7.jar
 
       - name: Render PlantUML diagrams
