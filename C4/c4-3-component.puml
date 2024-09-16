@@ -1,5 +1,5 @@
-@startuml c4-component-diagram
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+@startuml c4-3-component
+!include <C4/C4_Component>
 
 Container(frontend, "Frontend", "Angular", "User interface with product catalog and order overview.")
 

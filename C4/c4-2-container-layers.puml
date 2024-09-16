@@ -1,5 +1,5 @@
-@startuml c4-container-diagram
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+@startuml c4-2-container-layers
+!include <C4/C4_Container>
 
 !include <awslib/AWSCommon>
 !include <awslib/Storage/SimpleStorageService>

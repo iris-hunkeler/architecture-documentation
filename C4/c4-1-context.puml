@@ -1,5 +1,5 @@
-@startuml c4-context-diagram
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+@startuml c4-1-context
+!include <C4/C4_Context>
 
 Person(admin, "Admin")
 Person(user, "User")
