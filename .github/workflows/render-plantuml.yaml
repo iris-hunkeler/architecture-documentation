@@ -1,6 +1,10 @@
 name: Render PlantUML diagrams
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   render-plantuml:
