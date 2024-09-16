@@ -1,0 +1,48 @@
+@startuml c4-code-diagram
+hide circle
+hide empty members
+
+entity Product_Category {
+  * id: number <<generated>>
+  version: number
+  ---
+  name: string
+}
+
+entity Product {
+  * id: number <<generated>>
+  version: number
+  ---
+  name: string
+  description: string
+  price: number
+  ---
+  product_category_id: number <<FK>>
+}
+
+entity Product_Asset {
+  * id: number <<generated>>
+  version: number
+  ---
+  type: string
+  url: string
+  ---
+  product_id: number <<FK>>
+}
+
+entity Inventory_Position {
+  * id: number <<generated>>
+  version: number
+  ---
+  amount: number
+  position_type: string
+  ---
+  product_id: number <<FK>>
+}
+
+Product_Category ||..|{ Product
+Product ||..o{ Inventory_Position
+Product ||..o{ Product_Asset
+
+
+@enduml

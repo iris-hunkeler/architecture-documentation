@@ -1,0 +1,24 @@
+@startuml c4-component-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Container(frontend, "Frontend", "Angular", "User interface with product catalog and order overview.")
+
+Container_Boundary(system, "Product Service") {
+
+    Component(controller, "Controller", "Kotlin")
+    Component(elasticsearch, "Product Index", "Elasticsearch")
+
+    ComponentDb(db, "Database", "Postgres")
+}
+
+Container(product_sync, "Product Sync Service", "Kotlin", "Sync product data with external systems.")
+
+
+Rel(controller, elasticsearch, "Update products in product index")
+Rel(controller, db, "Read/Write data")
+
+Rel(frontend, controller, "Search, filter and load products")
+Rel_U(product_sync, controller, "Push/Pull product data")
+
+
+@enduml

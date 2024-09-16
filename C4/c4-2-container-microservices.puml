@@ -1,0 +1,41 @@
+@startuml c4-container-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(admin, "Admin")
+Person(user, "User")
+
+System_Boundary(system, "Unicorn Webshop") {
+
+    Container(frontend, "Frontend", "Angular", "User interface with product catalog and order overview.")
+
+    Container(storage, "Storage", "AWS S3", "Provides static data such as product images.")
+
+    Container(product, "Product Service", "Kotlin, Postgres, Elasticsearch", "Provide product information relevant for sales.")
+    Container(product_sync, "Product Sync Service", "Kotlin", "Sync product data with external systems.")
+    Container(customer, "Customer Service", "Kotlin, DynamoDB", "Store customer settings.")
+    Container(order, "Order Service", "Kotlin, DynamoDB", "Provides information about current and previous orders.")
+    Container(order_sync, "Order Sync Service", "Kotlin", "Sync oder data with external systems.")
+}
+
+Rel_R(frontend, storage, "Load product images.")
+Rel(frontend, product, "Search, filter and load products")
+Rel(frontend, order, "Store orders and get order information.")
+Rel(frontend, customer, "Load customer information based on login token.")
+
+Rel_U(order_sync, order, "")
+Rel_U(product_sync, product, "Push/Pull product data")
+
+System_Ext(inventory, "Inventory System", "Web Application tracking the inventory in store.")
+System_Ext(payment, "Payment Provider", "Provides secure payment services.")
+System_Ext(email, "E-Mail System", "Microsoft Exchange e-mail system.")
+
+Rel(user, frontend, "Search, select and order products. Set-up payment.")
+Rel(admin, frontend, "Administer webshop configurations.")
+
+Rel(product_sync, inventory, "Get current stock information for products.")
+Rel(order_sync, payment, "Execute payment.", "REST")
+Rel(order_sync, email, "Send emails.")
+
+Rel_U(email, user, "Send order information.")
+
+@enduml

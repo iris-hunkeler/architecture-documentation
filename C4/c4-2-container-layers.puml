@@ -1,0 +1,45 @@
+@startuml c4-container-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!include <awslib/AWSCommon>
+!include <awslib/Storage/SimpleStorageService>
+
+!include <tupadr3/common>
+!include <tupadr3/devicons2/java>
+!include <tupadr3/devicons2/angular>
+!include <tupadr3/devicons2/postgresql>
+!include <tupadr3/material/email>
+!include <tupadr3/font-awesome/money>
+!include <tupadr3/font-awesome-5/boxes>
+
+Person(admin, "Admin")
+Person(user, "User")
+
+System_Boundary(system, "Unicorn Webshop") {
+
+    Container(frontend, "Frontend", "Angular", "User interface with product catalog and order overview.", $sprite="angular")
+
+    Container(storage, "Storage", "AWS S3", "Provides static data such as product images.", $sprite="SimpleStorageService")
+
+    Container(backend, "Backend", "Java", "Provides interfaces to load products and orders. Interacts with external systems.", $sprite="java")
+    ContainerDb(db, "Database", "Postgres", "Stores all data for products, orders and users.", $sprite="postgresql")
+}
+
+Rel_R(frontend, storage, "Load product images.")
+Rel(frontend, backend, "Load products, create orders.")
+Rel_R(backend, db, "Read/Write.")
+
+System_Ext(inventory, "Inventory System", "Web Application tracking the inventory in store.", $sprite="boxes")
+System_Ext(payment, "Payment Provider", "Provides secure payment services.", $sprite="money")
+System_Ext(email, "E-Mail System", "Microsoft Exchange e-mail system.", $sprite="email")
+
+Rel(user, frontend, "Search, select and order products. Set-up payment.")
+Rel(admin, frontend, "Administer webshop configurations.")
+
+Rel(backend, inventory, "Get current stock information for products.", "REST")
+Rel(backend, payment, "Execute payment.", "REST")
+Rel(backend, email, "Send emails.")
+
+Rel_U(email, user, "Send order information.")
+
+@enduml
