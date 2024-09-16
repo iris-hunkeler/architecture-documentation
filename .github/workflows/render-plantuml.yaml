@@ -1,0 +1,29 @@
+name: Render PlantUML diagrams
+
+on: workflow_dispatch
+
+jobs:
+  render-plantuml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install PlantUML
+        run: |
+          sudo apt-get install plantuml
+          sudo apt-get install tree
+
+      - name: Render PlantUML diagrams
+        run: plantuml -tsvg C4/*.puml
+
+      - name: Push generated image
+        run: |
+          mv C4/*.svg images/
+          cd images
+          git config --global user.name ${{ secrets.GH_USER }}
+          git config --global user.email "${{ secrets.GH_MAIL }}"
+          git add *.svg
+          git commit -m "Update generated image(s)"
+          git push origin main
