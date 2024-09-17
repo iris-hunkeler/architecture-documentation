@@ -9,10 +9,12 @@ on:
 jobs:
   render-plantuml:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install PlantUML
         run: |
@@ -28,6 +30,14 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v45
   
+      - name: List all changed files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            echo "$file was changed"
+          done
+
       - name: Push generated image
         if: steps.changed-files.outputs.all_changed_files_count > 0
         env:
