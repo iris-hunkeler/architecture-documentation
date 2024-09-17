@@ -27,27 +27,14 @@ jobs:
           mv C4/*.png images/  
 
       - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v45
-        with:
-          files: |
-            **/images/*.png
-  
-      - name: List all changed files
-        env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
-        run: |
-          for file in ${ALL_CHANGED_FILES}; do
-            echo "$file was changed"
-          done
+        uses: tj-actions/verify-changed-files@v20
+        id: verify-changed-files
 
       - name: Push generated image
-        if: steps.changed-files.outputs.all_changed_files_count > 0
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:
-          ALL_CHANGED_FILES_COUNT: ${{ steps.changed-files.outputs.all_changed_files_count }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "$ALL_CHANGED_FILES_COUNT file(s) changed"
           cd images
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
