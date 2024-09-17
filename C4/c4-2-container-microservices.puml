@@ -23,7 +23,7 @@ Rel(frontend, order, "Store orders and get order information.")
 Rel(frontend, customer, "Load customer information based on login token.")
 
 Rel_U(order_sync, order, "")
-Rel_U(product_sync, product, "Push/Pull product data")
+Rel_U(product_sync, product, "Push/Pull product data.")
 
 System_Ext(inventory, "Inventory System", "Web Application tracking the inventory in store.")
 System_Ext(payment, "Payment Provider", "Provides secure payment services.")
