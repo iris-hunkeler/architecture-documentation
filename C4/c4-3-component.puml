@@ -1,7 +1,7 @@
 @startuml c4-3-component
 !include <C4/C4_Component>
 
-Container(frontend, "Frontend", "Angular", "User interface with product catalog and order overview.")
+Container(frontend, "Frontend", "Angular", "User interface with product catalog and order overview")
 
 Container_Boundary(system, "Product Service") {
 
