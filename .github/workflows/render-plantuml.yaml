@@ -29,7 +29,7 @@ jobs:
       - name: Get changed files
         id: changes
         run: |
-          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+          echo "::set-output name=all::$(git diff --name-only | xargs)"
   
       - name: Push generated image
         if: ${{needs.changedfiles.outputs.ts}}
