@@ -9,6 +9,8 @@ on:
 jobs:
   render-plantuml:
     runs-on: ubuntu-latest
+    outputs:
+      all: ${{ steps.changes.outputs.all}}
 
     steps:
       - name: Checkout repository
@@ -20,11 +22,18 @@ jobs:
           wget https://github.com/plantuml/plantuml/releases/download/v1.2024.7/plantuml-1.2024.7.jar
 
       - name: Render PlantUML diagrams
-        run: java -jar plantuml-1.2024.7.jar C4/*.puml
-
-      - name: Push generated image
         run: |
-          mv C4/*.png images/
+          java -jar plantuml-1.2024.7.jar C4/*.puml
+          mv C4/*.png images/  
+
+      - name: Get changed files
+        id: changes
+        run: |
+          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+  
+      - name: Push generated image
+        if: ${{needs.changedfiles.outputs.ts}}
+        run: |
           cd images
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
