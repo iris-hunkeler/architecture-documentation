@@ -9,9 +9,7 @@ on:
 jobs:
   render-plantuml:
     runs-on: ubuntu-latest
-    outputs:
-      all: ${{ steps.changes.outputs.all}}
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
