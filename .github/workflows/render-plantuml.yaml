@@ -29,6 +29,9 @@ jobs:
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **/images/*.png
   
       - name: List all changed files
         env:
