@@ -3,14 +3,17 @@
 
 ## PlantUML in Markdown
 
---> Directly in file
+### Directly in file
+* works nicely in preview in Visual Studio Code (using Markdown Preview Enhanced)
+* does **not** work on Github, because Github does not natively support PlantUML
+* *should* work on GitLab, because GitLab supports PlantUML (untested)
+
 ```plantuml
 A -> B: abc
 ```
 
-
---> rendering first
-![C4 Context](C4/c4-context-diagram.svg)
+### rendering using GitHub Action
+![C4 Context](images/c4-1-context.png)
 
 
 ## Mermaid in Markdown
@@ -21,5 +24,4 @@ graph TD;
     B-->D;
     C-->D;
 ```
-
 

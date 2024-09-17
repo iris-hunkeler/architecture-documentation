@@ -9,8 +9,6 @@ System_Ext(inventory, "Inventory System", "Web Application tracking the inventor
 System_Ext(payment, "Payment Provider", "Provides secure payment services.")
 System_Ext(email, "E-Mail System", "Microsoft Exchange e-mail system.")
 
-
-
 Rel_D(user, system, "Search, select and order products. Set-up payment.")
 Rel_D(admin, system, "Administer webshop configurations.")
 
