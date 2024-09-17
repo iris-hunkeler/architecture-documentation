@@ -32,7 +32,7 @@ jobs:
           echo "::set-output name=all::$(git diff --name-only | xargs)"
   
       - name: Push generated image
-        if: ${{needs.changedfiles.outputs.ts}}
+        if: ${{needs.changedfiles.outputs.all}}
         run: |
           cd images
           git config user.name "$(git log -n 1 --pretty=format:%an)"
