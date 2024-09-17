@@ -1,27 +1,8 @@
 # Documenting and Communicating Software Architecture
 
+This repository contains examples I use for talks and workshops about documentation and communication of software architecture.
 
-## PlantUML in Markdown
-
-### Directly in file
-* works nicely in preview in Visual Studio Code (using Markdown Preview Enhanced)
-* does **not** work on Github, because Github does not natively support PlantUML
-* *should* work on GitLab, because GitLab supports PlantUML (untested)
-
-```plantuml
-A -> B: abc
-```
-
-### rendering using GitHub Action
-![C4 Context](images/c4-1-context.png)
+The folder [C4](C4) contains diagrams of the popular [C4 model](https://c4model.com/) using [PlantUML](https://plantuml.com/) of an imaginary system called "Unicorn Webshop".
 
 
-## Mermaid in Markdown
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
-
+To learn how how to combine diagrams and Markdown, checkout [diagrams in Markdown](Markdown-Examples.md).
