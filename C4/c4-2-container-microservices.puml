@@ -18,7 +18,7 @@ System_Boundary(system, "Unicorn Webshop") {
 }
 
 Rel_R(frontend, storage, "Load product images.")
-Rel(frontend, product, "Search, filter and load products")
+Rel(frontend, product, "Search, filter and load products.")
 Rel(frontend, order, "Store orders and get order information.")
 Rel(frontend, customer, "Load customer information based on login token.")
 
