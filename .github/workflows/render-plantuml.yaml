@@ -34,6 +34,7 @@ jobs:
         if: steps.changed-files.outputs.all_changed_files_count > 0
         env:
           ALL_CHANGED_FILES_COUNT: ${{ steps.changed-files.outputs.all_changed_files_count }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "$ALL_CHANGED_FILES_COUNT have changed"
           cd images
@@ -43,5 +44,4 @@ jobs:
           git add *.png
           git commit -m "Update generated image(s)"
           git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
