@@ -27,13 +27,15 @@ jobs:
           mv C4/*.png images/  
 
       - name: Get changed files
-        id: changes
-        run: |
-          echo "::set-output name=all::$(git diff --name-only | xargs)"
+        id: changed-files
+        uses: tj-actions/changed-files@v45
   
       - name: Push generated image
-        if: ${{needs.changedfiles.outputs.all}}
+        if: steps.changed-files.outputs.all_changed_files_count > 0
+        env:
+          ALL_CHANGED_FILES_COUNT: ${{ steps.changed-files.outputs.all_changed_files_count }}
         run: |
+          echo "$ALL_CHANGED_FILES_COUNT have changed"
           cd images
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
