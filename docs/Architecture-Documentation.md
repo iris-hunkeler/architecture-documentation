@@ -12,7 +12,7 @@ The Unicorn Webshop is a show offering various unicorn themed products. It's mai
 ## Context & Scope
 
 
-testing
+![C4 Context](../images/c4-1-context.png)
 
 
 
