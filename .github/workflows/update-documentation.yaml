@@ -85,6 +85,6 @@ jobs:
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
           git remote set-url --push origin https://iris-hunkeler:$GITHUB_TOKEN@github.com/iris-hunkeler/architecture-documentation
-          git add *.pdf
+          git add \*.pdf
           git commit -m "Update generated pdf(s)"
           git push origin main    

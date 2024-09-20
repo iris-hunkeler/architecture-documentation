@@ -2,6 +2,7 @@
 
 
 ## Introduction and Goals
+The Unicorn Webshop is a show offering various unicorn themed products. It's main goal is the support of unicorn-lovers by providing the latest and greatest gadgets.
 
 
 ## Constraints
