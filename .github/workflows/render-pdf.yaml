@@ -39,7 +39,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd images
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
           git remote set-url --push origin https://iris-hunkeler:$GITHUB_TOKEN@github.com/iris-hunkeler/architecture-documentation
