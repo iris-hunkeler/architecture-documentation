@@ -16,7 +16,12 @@ The Unicorn Webshop is a show offering various unicorn themed products. It's mai
 
 
 
+
+
+
 ## Solution Strategy
+
+<img src="../images/c4-2-container-microservices.png">
 
 
 

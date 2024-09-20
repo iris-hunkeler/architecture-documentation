@@ -64,7 +64,7 @@ jobs:
           input_dir: docs
           output_dir: pdfs/
           images_dir: images
-          image_import: ./images
+          image_import: .././images
           build_html: false
 
       - name: Get changed files
