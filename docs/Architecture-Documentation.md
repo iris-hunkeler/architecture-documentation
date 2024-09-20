@@ -11,6 +11,8 @@ The Unicorn Webshop is a show offering various unicorn themed products. It's mai
 
 ## Context & Scope
 
+The Unicorn Webshop relies on external systems for services such as payment, inventory and sending of emails.
+
 
 ![C4 Context](../images/c4-1-context.png)
 
@@ -20,6 +22,8 @@ The Unicorn Webshop is a show offering various unicorn themed products. It's mai
 
 
 ## Solution Strategy
+
+The backend is implemented using microservices.
 
 <img src="../images/c4-2-container-microservices.png">
 
