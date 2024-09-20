@@ -1,13 +1,10 @@
 name: Render PDF from Markdown
-# This workflow is triggered on pushes to the repository.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    # Paths can be used to only trigger actions when you have edited certain files, such as a file within the /docs directory
-    paths:
-      - 'docs/**.md'
+  workflow_run:
+    workflows: [Render PlantUML diagrams]
+    types:
+      - completed
 
 jobs:
   converttopdf:
@@ -24,7 +21,7 @@ jobs:
           image_import: ./images
           # Default is true, can set to false to only get PDF files
           build_html: false
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: docs
-          path: pdfs
+          path: .
