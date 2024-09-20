@@ -1,0 +1,14 @@
+@startuml c4-1-context
+!include <C4/C4_Context>
+
+
+Person(admin, "Admin")
+Person(user, "User")
+
+System(system, "Unicorn Webshop", "Webshop offering unicorn themed products.") 
+
+Rel(user, system, "Search, select and order products. Set-up payment.")
+Rel(admin, system, "Administer webshop configurations.")
+
+
+@enduml

@@ -14,7 +14,7 @@ A -> B: abc
 ### rendering using GitHub Action
 * works in Visual Studio Code preview - but outdated!
 * works nicely on Github with Github actions to update the image
-![C4 Context](images/c4-1-context.png)
+![C4 Context](../images/c4-1-context.png)
 
 
 ## Mermaid in Markdown

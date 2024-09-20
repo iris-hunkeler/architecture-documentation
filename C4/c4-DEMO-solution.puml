@@ -1,0 +1,30 @@
+@startuml c4-1-context
+!include <C4/C4_Context>
+
+' Standard Library: https://github.com/plantuml/plantuml-stdlib
+
+!include <tupadr3/font-awesome-5/horse_head>
+!include <tupadr3/material/email>
+!include <tupadr3/font-awesome/money>
+!include <tupadr3/font-awesome-5/boxes>
+
+!include <awslib/AWSCommon>
+
+Person(admin, "Admin")
+Person(user, "User")
+
+System(system, "Unicorn Webshop", "Webshop offering unicorn themed products.", $sprite=horse_head) 
+System_Ext(inventory, "Inventory System", "Web Application tracking the inventory in store.", $sprite="boxes")
+System_Ext(payment, "Payment Provider", "Provides secure payment services.", $sprite="money")
+System_Ext(email, "E-Mail System", "Microsoft Exchange e-mail system.", $sprite="email")
+
+Rel_D(user, system, "Search, select and order products. Set-up payment.")
+Rel_D(admin, system, "Administer webshop configurations.")
+
+Rel(system, inventory, "Get current stock information for products.", "REST")
+Rel(system, payment, "Execute payment.", "REST")
+Rel(system, email, "Send emails.")
+
+Rel_U(email, user, "Send order information.")
+
+@enduml

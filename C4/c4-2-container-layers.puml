@@ -6,7 +6,7 @@
 
 !include <tupadr3/common>
 !include <tupadr3/devicons2/java>
-!include <tupadr3/devicons2/angular>
+!include <tupadr3/devicons/angular>
 !include <tupadr3/devicons2/postgresql>
 !include <tupadr3/material/email>
 !include <tupadr3/font-awesome/money>

@@ -19,14 +19,11 @@ The Unicorn Webshop relies on external systems for services such as payment, inv
 
 
 
-
-
 ## Solution Strategy
 
 The backend is implemented using microservices.
 
-<img src="../images/c4-2-container-microservices.png">
-
+![C4 Container](../images/c4-2-container-microservices.png)
 
 
 ## Building Block View
