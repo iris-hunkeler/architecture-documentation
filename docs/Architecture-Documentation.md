@@ -10,7 +10,8 @@
 
 ## Context & Scope
 
-![C4 Context](images/c4-1-context.png)
+
+testing
 
 
 
