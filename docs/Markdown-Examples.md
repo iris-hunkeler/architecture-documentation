@@ -13,7 +13,7 @@ A -> B: abc
 ```
 
 ### Rendered using GitHub action
-* (:heavy_check_mark:) works in preview in **Visual Studio Code** - but outdated!
+* ( :heavy_check_mark: ) works in preview in **Visual Studio Code** - but outdated!
 * :heavy_check_mark: works nicely on **GitHub**
 * :grey_question: requires different setup on **GitLab**
 * :heavy_check_mark: works nicely with **GitHub action** with markdown-to-pdf
