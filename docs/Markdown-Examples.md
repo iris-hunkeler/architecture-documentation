@@ -1,5 +1,7 @@
 # Documenting and Communicating Software Architecture
 
+> Architecture is about the important stuff. Whatever that is.
+
 ## PlantUML in Markdown
 
 ### Directly in file
